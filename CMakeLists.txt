@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(STM_MotorController)
+project(stm_motor_controller)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -50,6 +50,12 @@ find_package(catkin REQUIRED COMPONENTS
 #   Message1.msg
 #   Message2.msg
 # )
+
+## Generate services in the 'srv' folder
+add_service_files(
+  FILES
+  setPower.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(

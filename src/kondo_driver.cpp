@@ -10,10 +10,8 @@
 #include "hardware_interface/actuator_command_interface.h"
 #include "hardware_interface/actuator_state_interface.h"
 #include "hardware_interface/robot_hw.h"
-extern "C" {
-#include "kondo_driver/b3m.h"
-}
-#include "kondo_driver/setPower.h"
+#include "B3MServoMotors.h"
+#include "b3m_servo.h"
 
 const double RAD_TO_DEG = 180.0/M_PI*100;
 

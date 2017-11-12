@@ -8,7 +8,6 @@
 #ifndef B3MSERVOMOTORS_H
 #define B3MSERVOMOTORS_H
 
-#include "ServoMotors.h"
 #include "b3m_servo.h"
 #include <iostream>
 
