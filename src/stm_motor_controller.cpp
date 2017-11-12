@@ -57,18 +57,15 @@ public:
 		if (nh.getParam("id", id)) {
 			ROS_INFO("id: %d", id);
 		}
-		ROS_INFO("PASS:0");
 		if (!loopback) {
 			// Check motor existence
 			if (b3m_servo_mode(b3m, id, B3M_OPTIONS_RUN_NORMAL)) {
 				ROS_WARN("Cannot connect to servo ID: %d", id);
 			}
 		}
-		ROS_INFO("PASS:1");
 //		if (b3m_set_trajectory_mode(b3m, id, B3M_OPTIONS_TRAJECTORY_4)) {
 //			ROS_WARN("Cannot set trajectory mode to servo ID: %d", id);
 //		}
-/*
 		if (nh.getParam("joint_name", joint_name)) {
 			ROS_INFO("joint_name: %s", joint_name.c_str());
 		}
@@ -94,8 +91,6 @@ public:
 			ROS_INFO("temperature_limit: %d", temp_limit);
 			set_temperature_limit(temp_limit * 100);
 		}
- */
-		ROS_INFO("PASS:10");
 		hardware_interface::JointStateHandle state_handle(joint_name, &pos, &vel, &eff);
 		state_interface.registerHandle(state_handle);
 		hardware_interface::JointHandle pos_handle(state_interface.getHandle(joint_name), &cmd);
@@ -121,7 +116,8 @@ public:
 			eff = 0;
 		}else{
 			b3m_set_angle(b3m, id, deg100);
-			b3m_get_angle(b3m, id, &deg100);
+//			ros::Duration(0.001).sleep();
+//			b3m_get_angle(b3m, id, &deg100);
 			pos = deg100_to_radian(deg100);
 
 //			if (!b3m_set_angle_velocity(b3m, id, &deg100, DESIRED_VELOCITY)){
