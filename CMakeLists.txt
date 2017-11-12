@@ -82,7 +82,7 @@ generate_messages(
 catkin_package(
   CATKIN_DEPENDS roscpp rospy message_runtime
   INCLUDE_DIRS include
-#  LIBRARIES kondo_driver
+#  LIBRARIES stm_motor_controller
  #  DEPENDS system_lib
 )
 
@@ -98,19 +98,24 @@ include_directories(
 )
 
 ## Declare a cpp library
-# add_library(kondo_driver
-#   src/${PROJECT_NAME}/kondo_driver.cpp
+# add_library(stm_motor_controller
+#   src/${PROJECT_NAME}/stm_motor_controller.cpp
 # )
 
 ## Declare a cpp executable
-add_executable(kondo_driver src/kondo_driver.cpp src/B3MServoMotors.cpp src/b3m_servo.cpp)
+add_executable(stm_motor_controller
+  src/stm_motor_controller.cpp
+  src/B3MServoMotors.cpp
+  src/ServoMotors.cpp
+  src/b3m_servo.cpp
+)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
-# add_dependencies(kondo_driver_node kondo_driver_generate_messages_cpp)
+# add_dependencies(stm_motor_controller_node stm_motor_controller_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(kondo_driver
+target_link_libraries(stm_motor_controller
   ${catkin_LIBRARIES}
   usb ftdi
 )
@@ -133,7 +138,7 @@ target_link_libraries(kondo_driver
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS kondo_driver kondo_driver_node
+# install(TARGETS stm_motor_controller stm_motor_controller_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -158,10 +163,11 @@ target_link_libraries(kondo_driver
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_kondo_driver.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_stm_motor_controller.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+

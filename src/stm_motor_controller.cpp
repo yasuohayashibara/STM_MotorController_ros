@@ -1,5 +1,5 @@
 /**
- * Kondo ICS & B3M motor driver
+ * Kondo B3M motor driver
  */
 #include <boost/shared_ptr.hpp>
 #include <math.h>
@@ -10,6 +10,7 @@
 #include "hardware_interface/actuator_command_interface.h"
 #include "hardware_interface/actuator_state_interface.h"
 #include "hardware_interface/robot_hw.h"
+#include "stm_motor_controller/setPower.h"
 #include "B3MServoMotors.h"
 #include "b3m_servo.h"
 
@@ -41,7 +42,7 @@ public:
 	double cmd, pos, vel, eff;
 	std::string joint_name;
 	
-	bool set_power (kondo_driver::setPower::Request &req, kondo_driver::setPower::Response &res) {
+	bool set_power (stm_motor_controller::setPower::Request &req, stm_motor_controller::setPower::Response &res) {
 		ROS_INFO("id %d, request: %d", this->id, req.request);
 		motor_power = req.request;
 		res.result = req.request;
@@ -256,7 +257,7 @@ class KondoDriver : public hardware_interface::RobotHW
 
 int main(int argc, char **argv)
 {
-	ros::init(argc, argv, "kondo_driver");
+	ros::init(argc, argv, "stm_motor_controller");
 	ros::NodeHandle nh;
 
 	// Create hardware interface 
