@@ -1,1 +1,2 @@
-# STM_MotorController_ros
+# stm_motor_controller
+
